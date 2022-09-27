@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Card from "./components/Card";
+import Heading from "./components/Heading";
+import List from "./components/List";
+import Navbar from "./components/Navbar";
+import styled from "styled-components";
+
+export const Body = styled.div`
+  background-color: ${({ theme }) => theme.colors.brand.primary};
+  padding: ${({theme}) => theme.spacing(2.5)} ${({theme}) => theme.spacing(4)};
+  height: 100vh;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Body>
+        <Heading />
+        <List />
+        {/* <Card /> */}
+      </Body>
+    </>
   );
 }
 
