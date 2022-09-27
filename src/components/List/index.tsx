@@ -1,12 +1,15 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Container } from "./styled";
 
-interface ListProps {}
+interface ListProps {
+  children: ReactNode;
+}
 
-const List: FC<ListProps> = () => {
+const List: FC<ListProps> = ({ children }) => {
   return (
     <Container>
       <h5>List</h5>
+      {children}
     </Container>
   );
 };

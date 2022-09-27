@@ -8,30 +8,30 @@ const theme: DefaultTheme = {
 
   colors: {
     brand: {
-      primary: '#087cbc',
-      secondary: '#0864a4',
+      primary: "#087cbc",
+      secondary: "#0864a4",
     },
     neutral: {
-      black: '#000000',
-      white: '#ffffff',
+      black: "#000000",
+      white: "#ffffff",
     },
     grey: {
-      light: '#ebecf0',
-      medium: '#5e6c84',
-      dark: '#3f516c',
+      light: "#ebecf0",
+      medium: "#5e6c84",
+      dark: "#3f516c",
     },
   },
 
   boxShadow: {
-    normal: '0px 0px 60px rgba(0, 0, 0, 0.15)',
+    normal: "0px 1.5px 0px 0px rgba(100,100,100,0.25)",
   },
 
   spacing: (s: number) => `${s * 8}px`,
 
   fontSizes: {
-    small: "1rem",
-    medium: "2em",
-    large: "3em",
+    small: "14px",
+    medium: "18px",
+    large: "22px",
   },
 };
 
