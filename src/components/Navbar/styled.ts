@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.brand.secondary};
-  padding: ${({ theme }) => theme.spacing(0.5)} ${({ theme }) => theme.spacing(4)};
   display: flex;
   align-items: center;
+
+  ${({ theme }) => `
+    background-color: ${theme.colors.brand.secondary};
+    padding: ${theme.spacing(0.5)} ${theme.spacing(4)};
+  `}
 `;
 
 export const SideItem = styled.div`
@@ -12,7 +15,10 @@ export const SideItem = styled.div`
 `
 
 export const Logo = styled.div`
-  color: ${({ theme }) => theme.colors.neutral.white};
-  font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: bold;
+
+  ${({ theme }) => `
+    color: ${theme.colors.neutral.white};
+    font-size: ${theme.fontSizes.large};
+  `}
 `;
