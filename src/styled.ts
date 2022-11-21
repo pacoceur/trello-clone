@@ -1,32 +1,24 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  height: 100%;
-  width: 272px;
-  display: flex;
-  flex-direction: column;
+export const Body = styled.div`
+  height: 100vh;
+  width: 100%;
 
   ${({ theme }) => `
-    background-color: ${theme.colors.grey.light};
-    color: ${theme.colors.grey.dark};
-    border-radius: ${theme.borderRadius.normal};
-    padding: ${theme.spacing(2)} ${theme.spacing(1)} ${theme.spacing(0.5)};
-    font-size: ${theme.fontSizes.medium};
-    gap: ${theme.spacing(1)};
+    background-color: ${theme.colors.brand.primary};
+    padding: ${theme.spacing(2.5)} ${theme.spacing(4)};
   `}
 `;
 
-export const Title = styled.p`
-  font-weight: bold;
-
-  ${({ theme }) => `
-    padding: 0 0 0 ${theme.spacing(1)};
-    font-size: ${theme.fontSizes.small};
-  `}
+export const ListWrapper = styled.div`
+  display: inline-flex;
+  min-width: 100%;
+  overflow-x: auto;
+  gap: ${({ theme }) => theme.spacing(1)};
 `;
 
 export const StyledInput = styled.input`
-  background: none;
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   width: 100%;
   cursor: pointer;

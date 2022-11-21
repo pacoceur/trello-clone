@@ -1,17 +1,28 @@
-import { FC, ReactNode } from "react";
-import { Container, StyledInput, Title } from "./styled";
-import { AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-import Card from "../Card";
+import { FC, ReactNode } from 'react';
+import { Container, StyledInput, Title } from './styled';
+import { useState, useEffect, useRef } from 'react';
+import Card from '../Card';
+import { Draggable } from 'react-beautiful-dnd';
+import { v4 as uuidv4 } from 'uuid';
 
 interface ListProps {
-  items: ReactNode[];
+  id: any;
+  items: any;
   setCards: any;
   submit: any;
+  title: string;
+  provided: any;
 }
 
-const List: FC<ListProps> = ({ items, setCards, submit }) => {
-  const [input, setInput] = useState("");
+const List: FC<ListProps> = ({
+  id,
+  items,
+  setCards,
+  submit,
+  title,
+  provided,
+}) => {
+  const [input, setInput] = useState('');
   const inputRef = useRef<any>(null);
 
   useEffect(() => {
@@ -26,20 +37,40 @@ const List: FC<ListProps> = ({ items, setCards, submit }) => {
     e.preventDefault();
 
     submit({
-      id: Math.floor(Math.random() * 10000),
-      text: input,
+      id: id,
+      title: title,
+      tasks: [
+        ...items,
+        {
+          id: uuidv4(),
+          title: input,
+        },
+      ],
     });
-    setInput("");
+    setInput('');
   };
 
   return (
-    <Container axis="y" values={items} onReorder={setCards}>
-      <Title>List</Title>
-      <AnimatePresence mode={"popLayout"}>
-        {items.map((item: any) => (
-          <Card item={item} key={item.id} />
-        ))}
-      </AnimatePresence>
+    <Container {...provided.droppableProps} ref={provided.innerRef}>
+      <Title>{title}</Title>
+      {items.map((item: any, index: number) => (
+        <Draggable key={item.id} draggableId={item.id} index={index}>
+          {(provided, snapshot) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              style={{
+                ...provided.draggableProps.style,
+                opacity: snapshot.isDragging ? '0.5' : '1',
+              }}
+            >
+              <Card item={item} />
+            </div>
+          )}
+        </Draggable>
+      ))}
+      {provided.placeholder}
       <form onSubmit={handleSubmit}>
         <StyledInput
           type="text"

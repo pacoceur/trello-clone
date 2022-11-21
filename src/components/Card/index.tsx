@@ -1,13 +1,12 @@
-import { FC } from "react";
-import { Container } from "./styled";
+import { FC } from 'react';
+import { Container } from './styled';
 
 interface CardProps {
   item: any;
 }
 
 const Card: FC<CardProps> = ({ item }) => {
-  return <Container value={item} layoutId={item.id}>{item.text}</Container>;
+  return <Container>{item.title}</Container>;
 };
 
 export default Card;
-

@@ -1,9 +1,6 @@
-import styled from "styled-components";
-import { Reorder } from "framer-motion";
+import styled from 'styled-components';
 
-interface CardProps {}
-
-export const Container = styled(Reorder.Item)<CardProps>`
+export const Container = styled.div`
   list-style: none;
 
   ${({ theme }) => `
@@ -12,7 +9,6 @@ export const Container = styled(Reorder.Item)<CardProps>`
     color: ${theme.colors.grey.dark};
     border-radius: ${theme.borderRadius.normal};
     padding: ${theme.spacing(1)} ${theme.spacing(1)};
-    margin: 0 0 ${theme.spacing(1)} 0;
     font-size: ${theme.fontSizes.small};
   `}
 `;
