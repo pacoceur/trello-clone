@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   list-style: none;
+  user-select: none;
 
   ${({ theme }) => `
     background-color: ${theme.colors.neutral.white};

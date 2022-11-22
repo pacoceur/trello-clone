@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
+  max-height: 75vh;
   width: 272px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   ${({ theme }) => `
     background-color: ${theme.colors.grey.light};
@@ -30,6 +32,7 @@ export const StyledInput = styled.input`
   border: none;
   width: 100%;
   cursor: pointer;
+  user-select: none;
 
   ${({ theme }) => `
     color: ${theme.colors.grey.medium};

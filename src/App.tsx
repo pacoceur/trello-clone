@@ -12,10 +12,6 @@ function App() {
   const [input, setInput] = useState('');
   const inputRef = useRef<any>(null);
 
-  useEffect(() => {
-    inputRef.current.focus();
-  });
-
   const handleChange = (e: any) => {
     setInput(e.target.value);
   };
@@ -32,6 +28,7 @@ function App() {
       },
     ];
 
+    inputRef.current.focus();
     setData(newData);
     setInput('');
   };

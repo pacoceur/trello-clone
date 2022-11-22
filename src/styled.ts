@@ -1,38 +1,50 @@
 import styled from 'styled-components';
 
 export const Body = styled.div`
-  height: 100vh;
   width: 100%;
+  flex-grow: 1;
+  overflow-x: auto;
 
   ${({ theme }) => `
     background-color: ${theme.colors.brand.primary};
-    padding: ${theme.spacing(2.5)} ${theme.spacing(4)};
+    padding: ${theme.spacing(2.5)} 0;
   `}
 `;
 
 export const ListWrapper = styled.div`
-  display: inline-flex;
-  min-width: 100%;
-  overflow-x: auto;
-  gap: ${({ theme }) => theme.spacing(1)};
+  display: flex;
+
+  ${({ theme }) => `
+    gap: ${theme.spacing(1)};
+    padding: 0 ${theme.spacing(4)};
+  `}
+
+  div, form {
+    flex-shrink: 0;
+  }
 `;
 
 export const StyledInput = styled.input`
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   border: none;
-  width: 100%;
+  width: 272px;
   cursor: pointer;
+  user-select: none;
 
   ${({ theme }) => `
-    color: ${theme.colors.grey.medium};
+    color: ${theme.colors.neutral.white};
     font-size: ${theme.fontSizes.small};
     margin: 0 0 ${theme.spacing(0.5)} 0;
-    padding: ${theme.spacing(1)} ${theme.spacing(1)};
+    padding: ${theme.spacing(1.5)} ${theme.spacing(2.5)};
     border-radius: ${theme.borderRadius.normal};
   `}
 
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.neutral.white};
+  }
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   &:focus {
@@ -40,8 +52,9 @@ export const StyledInput = styled.input`
     cursor: initial;
 
     ${({ theme }) => `
-    background-color: ${theme.colors.neutral.white};
-    box-shadow: ${theme.boxShadow.normal};
+      color: ${theme.colors.grey.medium};
+      background-color: ${theme.colors.neutral.white};
+      box-shadow: ${theme.boxShadow.normal};
   `}
   }
 `;

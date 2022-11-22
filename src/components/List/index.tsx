@@ -25,10 +25,6 @@ const List: FC<ListProps> = ({
   const [input, setInput] = useState('');
   const inputRef = useRef<any>(null);
 
-  useEffect(() => {
-    inputRef.current.focus();
-  });
-
   const handleChange = (e: any) => {
     setInput(e.target.value);
   };
@@ -48,6 +44,7 @@ const List: FC<ListProps> = ({
       ],
     });
     setInput('');
+    inputRef.current.focus();
   };
 
   return (
@@ -80,6 +77,7 @@ const List: FC<ListProps> = ({
           onChange={handleChange}
           ref={inputRef}
           autoComplete="off"
+          autoFocus
         />
       </form>
     </Container>

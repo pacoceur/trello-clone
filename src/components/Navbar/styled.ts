@@ -16,6 +16,7 @@ export const SideItem = styled.div`
 
 export const Logo = styled.div`
   font-weight: bold;
+  user-select: none;
 
   ${({ theme }) => `
     color: ${theme.colors.neutral.white};
