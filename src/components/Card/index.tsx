@@ -1,14 +1,14 @@
-import { FC } from "react";
-import { Container } from "./styled";
+import { FC } from 'react';
+import { Container } from './styled';
 
-interface CardProps {}
+interface CardProps {
+  item: {
+    title: string;
+  };
+}
 
-const Card: FC<CardProps> = () => {
-  return (
-    <Container>
-      <p>Card</p>
-    </Container>
-  );
+const Card: FC<CardProps> = ({ item }) => {
+  return <Container>{item.title}</Container>;
 };
 
 export default Card;

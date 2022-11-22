@@ -14,6 +14,7 @@ export const StyledButton = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   border: none;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.4);
