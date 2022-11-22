@@ -7,15 +7,15 @@ const mockData = [
     tasks: [
       {
         id: uuidv4(),
-        title: 'Learn Javascript',
+        title: 'Aprender Javascript',
       },
       {
         id: uuidv4(),
-        title: 'Learn Git',
+        title: 'Aprender Git',
       },
       {
         id: uuidv4(),
-        title: 'Learn Python',
+        title: 'Aprender Python',
       },
     ],
   },
@@ -25,15 +25,11 @@ const mockData = [
     tasks: [
       {
         id: uuidv4(),
-        title: 'Learn CSS',
+        title: 'Aprender CSS',
       },
       {
         id: uuidv4(),
-        title: 'Learn HTML',
-      },
-      {
-        id: uuidv4(),
-        title: 'Learn JS',
+        title: 'Aprender HTML',
       },
     ],
   },
@@ -43,15 +39,11 @@ const mockData = [
     tasks: [
       {
         id: uuidv4(),
-        title: 'Learn Typescript',
+        title: 'Aprender Typescript',
       },
       {
         id: uuidv4(),
-        title: 'Learn Go',
-      },
-      {
-        id: uuidv4(),
-        title: 'Learn Ruby',
+        title: 'Aprender Go',
       },
     ],
   },

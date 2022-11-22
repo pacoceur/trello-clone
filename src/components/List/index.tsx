@@ -1,35 +1,37 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Container, StyledInput, Title } from './styled';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent } from 'react';
 import Card from '../Card';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, DroppableProvided } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
-interface ListProps {
-  id: any;
-  items: any;
-  setCards: any;
-  submit: any;
+export interface ListProps {
+  id: string;
+  items: { id: string; title: string }[];
+  submit: (item: {
+    id: string;
+    title: string;
+    tasks: { id: string; title: string }[];
+  }) => void;
   title: string;
-  provided: any;
+  provided: DroppableProvided;
 }
 
 const List: FC<ListProps> = ({
   id,
   items,
-  setCards,
   submit,
   title,
   provided,
 }) => {
   const [input, setInput] = useState('');
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     submit({
@@ -44,7 +46,7 @@ const List: FC<ListProps> = ({
       ],
     });
     setInput('');
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (

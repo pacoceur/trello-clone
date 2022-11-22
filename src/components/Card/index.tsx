@@ -2,7 +2,9 @@ import { FC } from 'react';
 import { Container } from './styled';
 
 interface CardProps {
-  item: any;
+  item: {
+    title: string;
+  };
 }
 
 const Card: FC<CardProps> = ({ item }) => {

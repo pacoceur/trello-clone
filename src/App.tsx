@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent } from 'react';
 import Heading from './components/Heading';
 import List from './components/List';
 import Navbar from './components/Navbar';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import mockData from './mockData';
 import { Body, ListWrapper, StyledInput } from './styled';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,13 +10,13 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
   const [data, setData] = useState(mockData);
   const [input, setInput] = useState('');
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const addList = (e: any) => {
+  const addList = (e: FormEvent) => {
     e.preventDefault();
 
     const newData = [
@@ -28,12 +28,16 @@ function App() {
       },
     ];
 
-    inputRef.current.focus();
+    inputRef.current?.focus();
     setData(newData);
     setInput('');
   };
 
-  const addListItem = (item: any) => {
+  const addListItem = (item: {
+    id: string;
+    title: string;
+    tasks: { id: string; title: string }[];
+  }) => {
     const newData = data.slice().map((list) => {
       return list.id === item.id ? item : list;
     });
@@ -41,7 +45,7 @@ function App() {
     setData(newData);
   };
 
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
     if (!result.destination) return;
     const { source, destination } = result;
 
@@ -81,7 +85,6 @@ function App() {
                     {...provided.droppableProps}
                     id={section.id}
                     items={section.tasks}
-                    setCards={setData}
                     submit={addListItem}
                     title={section.title}
                     provided={provided}
